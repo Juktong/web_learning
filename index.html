@@ -20,7 +20,7 @@
         <!-- Navigation Bar -->
         <nav class="flex justify-between items-center py-4 border-b">
             <div class="flex items-center">
-                <input type="text" placeholder="Search..." class="border rounded px-2 py-1">
+                <input type="text" placeholder="Search..." class="border rounded px-2 py-1" onkeyup="searchItems()">
             </div>
             <div class="flex items-center gap-4">
                 <a href="#" class="hover:text-blue-500">Home Page</a>
@@ -147,6 +147,21 @@
             });
         }
 
+        function searchItems() {
+            let searchQuery = document.querySelector('input[type="text"]').value.toLowerCase();
+            let items = document.querySelectorAll('.my-8 .border');
+
+            items.forEach(item => {
+                let title = item.querySelector('.expandable-header span:nth-child(2)').textContent.toLowerCase();
+                let tags = item.querySelector('.expandable-header .text-sm').textContent.toLowerCase();
+
+                if (title.includes(searchQuery) || tags.includes(searchQuery)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
     </script>
 </body>
 </html>
