@@ -13,6 +13,10 @@
         .expandable-header.active + .expandable-content {
             display: block;
         }
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-yellow-100">
@@ -33,10 +37,10 @@
         <div class="my-8">
             <h2 class="text-2xl font-bold mb-4">Work Types</h2>
             <div class="flex gap-4">
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="all" onclick="filterSelection('all')">All</button>
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="AA" onclick="filterSelection('AA')">AA</button>
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="BB" onclick="filterSelection('BB')">BB</button>
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="CC" onclick="filterSelection('CC')">CC</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 filter-btn" data-category="all" onclick="filterSelection('all')">All</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 filter-btn" data-category="AA" onclick="filterSelection('AA')">AA</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 filter-btn" data-category="BB" onclick="filterSelection('BB')">BB</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 filter-btn" data-category="CC" onclick="filterSelection('CC')">CC</button>
             </div>
         </div>
 
@@ -134,18 +138,12 @@
             });
         });
 
-        filterSelection("all") // Show all items initially
-
-        function filterSelection(category) {
-            var items = document.querySelectorAll('.my-8 .border'); // Select all portfolio items
-            items.forEach(item => {
-                if (category === "all" || item.dataset.category === category) {
-                    item.style.display = "block"; // Show the item
-                } else {
-                    item.style.display = "none"; // Hide the item
-                }
-            });
-        }
+        // Initialize the page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set "All" button as active by default
+            document.querySelector('.filter-btn[data-category="all"]').classList.add('active');
+            applyFilters(); // Apply initial filtering
+        });
 
         function searchItems() {
             applyFilters();
@@ -153,7 +151,7 @@
 
         function applyFilters() {
             let searchQuery = document.querySelector('input[type="text"]').value.toLowerCase();
-            let selectedCategory = document.querySelector('.my-8 button[data-category].active')?.dataset.category || "all"; // Get active category
+            let selectedCategory = document.querySelector('.filter-btn.active')?.dataset.category || "all";
             let items = document.querySelectorAll('.my-8 .border');
 
             items.forEach(item => {
@@ -171,17 +169,17 @@
             });
         }
 
-
         function filterSelection(category) {
             // Remove 'active' class from all category buttons
-            document.querySelectorAll('.my-8 button[data-category]').forEach(btn => {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
 
             // Add 'active' class to the clicked button
-            document.querySelector(`.my-8 button[data-category="${category}"]`).classList.add('active');
+            document.querySelector(`.filter-btn[data-category="${category}"]`).classList.add('active');
+            
+            // Apply filters with the new category
             applyFilters();
-
         }
     </script>
 </body>
