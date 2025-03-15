@@ -33,9 +33,10 @@
         <div class="my-8">
             <h2 class="text-2xl font-bold mb-4">Work Types</h2>
             <div class="flex gap-4">
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="AA">AA</button>
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="BB">BB</button>
-                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="CC">CC</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="all" onclick="filterSelection('all')">All</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="AA" onclick="filterSelection('AA')">AA</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="BB" onclick="filterSelection('BB')">BB</button>
+                <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" data-category="CC" onclick="filterSelection('CC')">CC</button>
             </div>
         </div>
 
@@ -132,6 +133,20 @@
                 icon.classList.toggle('fa-chevron-up');
             });
         });
+
+        filterSelection("all") // Show all items initially
+
+        function filterSelection(category) {
+            var items = document.querySelectorAll('.my-8 .border'); // Select all portfolio items
+            items.forEach(item => {
+                if (category === "all" || item.dataset.category === category) {
+                    item.style.display = "block"; // Show the item
+                } else {
+                    item.style.display = "none"; // Hide the item
+                }
+            });
+        }
+
     </script>
 </body>
 </html>
