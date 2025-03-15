@@ -1,0 +1,50 @@
+[
+    {
+        "id": 7,
+        "category": "JD",
+        "title": "John Doe: Project Alpha",
+        "tags": "Demo, Alpha",
+        "youtube": "https://www.youtube.com/embed/M7lc1UVf-VE",
+        "description": "John Doe's Project Alpha. A placeholder project description for demo purposes."
+    },
+    {
+        "id": 8,
+        "category": "JD",
+        "title": "John Doe: Project Beta",
+        "tags": "Demo, Beta",
+        "youtube": "https://www.youtube.com/embed/ScMzIvxBSi4",
+        "description": "John Doe's Project Beta. A placeholder project description for demo purposes."
+    },
+    {
+        "id": 9,
+        "category": "JD",
+        "title": "John Doe: Project Gamma",
+        "tags": "Demo, Gamma",
+        "youtube": "https://www.youtube.com/embed/ysz5S6PUM-U",
+        "description": "John Doe's Project Gamma. A placeholder project description for demo purposes."
+    },
+    {
+        "id": 10,
+        "category": "AA",
+        "title": "Random Project: Eclipse",
+        "tags": "Innovative, Tech",
+        "youtube": "https://www.youtube.com/embed/2Vv-BfVoq4g",
+        "description": "A groundbreaking project exploring the future of technology."
+    },
+    {
+        "id": 11,
+        "category": "BB",
+        "title": "Random Project: Odyssey",
+        "tags": "Adventure, Exploration",
+        "youtube": "https://www.youtube.com/embed/ZZ5LpwO-An4",
+        "description": "An epic journey into the unknown."
+    },
+    {
+        "id": 12,
+        "category": "CC",
+        "title": "Random Project: Horizon",
+        "tags": "Vision, Future",
+        "youtube": "https://www.youtube.com/embed/kXYiU_JCYtU",
+        "description": "A visionary project that pushes the boundaries of creativity."
+    }
+]

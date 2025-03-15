@@ -7,31 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        .expandable-content {
-            display: none;
-        }
-        .expandable-header.active + .expandable-content {
-            display: block;
-        }
-        .filter-btn.active {
-            background-color: #3b82f6;
-            color: white;
-        }
+        .expandable-content { display: none; }
+        .expandable-header.active + .expandable-content { display: block; }
+        .filter-btn.active { background-color: #3b82f6; color: white; }
     </style>
 </head>
 <body class="bg-yellow-100">
     <div class="container mx-auto my-8 px-4">
-        <!-- Debug Panel (hidden by default) -->
-        <div id="debug-panel" class="bg-gray-100 p-4 mb-4 rounded border border-gray-300" style="display: none;">
-            <h3 class="font-bold mb-2">Debug Info</h3>
-            <div id="debug-content" class="text-sm font-mono"></div>
-            <button onclick="document.getElementById('debug-panel').style.display='none'" class="mt-2 px-2 py-1 bg-gray-200 rounded text-xs">Hide</button>
-        </div>
-        <button onclick="document.getElementById('debug-panel').style.display='block'" class="mb-4 px-2 py-1 bg-gray-200 rounded text-xs">Show Debug</button>
+        <!-- Removed Debug Panel and Show Debug button -->
+        
         <!-- Navigation Bar -->
         <nav class="flex justify-between items-center py-4 border-b">
             <div class="flex items-center">
-                <input type="text" placeholder="Search..." class="border rounded px-2 py-1" onkeyup="searchItems()">
+                <input type="text" placeholder="Search..." class="border rounded px-2 py-1">
             </div>
             <div class="flex items-center gap-4">
                 <a href="#" class="hover:text-blue-500">Home Page</a>
@@ -42,7 +30,7 @@
 
         <!-- Work Type Selection -->
         <div class="my-8">
-            <h2 class="text-2xl font-bold mb-4">Work Types</h2>
+            <!-- removed the Work Types header -->
             <div class="flex gap-4">
                 <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 filter-btn" data-category="all" onclick="filterSelection('all')">All</button>
                 <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 filter-btn" data-category="AA" onclick="filterSelection('AA')">AA</button>
@@ -51,98 +39,19 @@
             </div>
         </div>
 
-        <!-- Portfolio Items -->
+        <!-- Portfolio Items Container -->
         <div class="my-8">
-            <h2 class="text-2xl font-bold mb-4">Portfolio</h2>
-
-            <!-- Item 1 -->
-            <div class="border rounded mb-4" data-category="AA">
-                <div class="expandable-header px-4 py-2 cursor-pointer flex justify-between items-center">
-                    <i class="fas fa-chevron-down"></i>
-                    <span>Work Item 1 Title</span>
-                    <span class="text-sm text-gray-500">Tags: Tag1, Tag2</span>
-                </div>
-                <div class="expandable-content px-4 py-2">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <p class="mt-4">Description for Work Item 1.  This is a placeholder.</p>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="border rounded mb-4" data-category="BB">
-                <div class="expandable-header px-4 py-2 cursor-pointer flex justify-between items-center">
-                    <i class="fas fa-chevron-down"></i>
-                    <span>Work Item 2 Title</span>
-                    <span class="text-sm text-gray-500">Tags: Tag2, Tag3</span>
-                </div>
-                <div class="expandable-content px-4 py-2">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <p class="mt-4">Description for Work Item 2. This is a placeholder.</p>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="border rounded mb-4" data-category="AA">
-                <div class="expandable-header px-4 py-2 cursor-pointer flex justify-between items-center">
-                    <i class="fas fa-chevron-down"></i>
-                    <span>Work Item 3 Title</span>
-                    <span class="text-sm text-gray-500">Tags: Tag1, Tag3</span>
-                </div>
-                <div class="expandable-content px-4 py-2">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <p class="mt-4">Description for Work Item 3.  This is a placeholder.</p>
-                </div>
-            </div>
-
-            <!-- Item 4 -->
-            <div class="border rounded mb-4" data-category="CC">
-                <div class="expandable-header px-4 py-2 cursor-pointer flex justify-between items-center">
-                    <i class="fas fa-chevron-down"></i>
-                    <span>Work Item 4 Title</span>
-                    <span class="text-sm text-gray-500">Tags: Tag1, Tag4</span>
-                </div>
-                <div class="expandable-content px-4 py-2">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <p class="mt-4">Description for Work Item 4.  This is a placeholder.</p>
-                </div>
-            </div>
-
-            <!-- Item 5 -->
-            <div class="border rounded mb-4" data-category="BB">
-                <div class="expandable-header px-4 py-2 cursor-pointer flex justify-between items-center">
-                    <i class="fas fa-chevron-down"></i>
-                    <span>Work Item 5 Title</span>
-                    <span class="text-sm text-gray-500">Tags: Tag2, Tag4</span>
-                </div>
-                <div class="expandable-content px-4 py-2">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <p class="mt-4">Description for Work Item 5.  This is a placeholder.</p>
-                </div>
-            </div>
-
-            <!-- Item 6 -->
-            <div class="border rounded mb-4" data-category="AA">
-                <div class="expandable-header px-4 py-2 cursor-pointer flex justify-between items-center">
-                    <i class="fas fa-chevron-down"></i>
-                    <span>Work Item 6 Title</span>
-                    <span class="text-sm text-gray-500">Tags: Tag3, Tag4</span>
-                </div>
-                <div class="expandable-content px-4 py-2">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <p class="mt-4">Description for Work Item 6.  This is a placeholder.</p>
-                </div>
+            <!-- removed the Portfolio header -->
+            <div id="portfolio-container">
+            <!-- Portfolio items will be rendered here -->
             </div>
         </div>
     </div>
 
     <script>
-        // Debug helper function
-        function updateDebug(message) {
-            const debugContent = document.getElementById('debug-content');
-            const timestamp = new Date().toLocaleTimeString();
-            debugContent.innerHTML += `<div>[${timestamp}] ${message}</div>`;
-            console.log(message);
-        }
+        // Removed updateDebug function and all related calls
+
+        // Setup expandable headers
         document.querySelectorAll('.expandable-header').forEach(header => {
             header.addEventListener('click', () => {
                 header.classList.toggle('active');
@@ -152,64 +61,90 @@
             });
         });
 
-        // Initialize the page when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            updateDebug("DOM loaded, initializing...");
-            
-            // Set "All" button as active by default
-            let allButton = document.querySelector('.filter-btn[data-category="all"]');
-            if (allButton) {
-                allButton.classList.add('active');
-                updateDebug("Set 'All' button as active");
-            } else {
-                updateDebug("ERROR: Could not find 'All' button");
+        // Fetch portfolio items from the external JSON file and render them
+        async function loadPortfolio() {
+            try {
+                const response = await fetch('portfolio.json');
+                const portfolioItems = await response.json();
+                const container = document.getElementById('portfolio-container');
+                container.innerHTML = portfolioItems.map(item => `
+                    <div class="border rounded mb-4 portfolio-item" data-category="${item.category}">
+                        <div class="expandable-header px-4 py-2 cursor-pointer flex items-center">
+                            <div class="w-8">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="flex-1 text-left">
+                                ${item.title}
+                            </div>
+                            <div>
+                                <span class="text-sm text-gray-500">Tags: ${item.tags}</span>
+                            </div>
+                        </div>
+                        <div class="expandable-content px-4 py-2">
+                            <iframe width="560" height="315" src="${item.youtube}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                            <p class="mt-4">${item.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Reattach expandable header event listeners after dynamic render
+                document.querySelectorAll('.expandable-header').forEach(header => {
+                    header.addEventListener('click', () => {
+                        header.classList.toggle('active');
+                        const icon = header.querySelector('i');
+                        icon.classList.toggle('fa-chevron-down');
+                        icon.classList.toggle('fa-chevron-up');
+                    });
+                });
+                applyFilters();
+            } catch (error) {
+                // Error handling (debug logging removed)
             }
-            
-            // Log all available categories
-            let categories = [];
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                categories.push(btn.getAttribute('data-category'));
-            });
-            updateDebug(`Available categories: ${categories.join(', ')}`);
-            
-            // Apply initial filtering
-            applyFilters();
-        });
-
-        function searchItems() {
-            applyFilters();
         }
 
-        function applyFilters() {
-            // Get search query
-            let searchQuery = document.querySelector('input[type="text"]').value.toLowerCase();
-            
-            // Get selected category - more robust selector
-            let activeButton = document.querySelector('.filter-btn.active');
-            let selectedCategory = activeButton ? activeButton.getAttribute('data-category') : "all";
-            
-            updateDebug(`Selected category: ${selectedCategory}`);
-            
-            // Get all portfolio items
-            let items = document.querySelectorAll('.my-8 .border');
-            
-            // Count for visible items
-            let visibleCount = 0;
-            let categoryStats = {};
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Activate default filter ("all")
+            const allButton = document.querySelector('.filter-btn[data-category="all"]');
+            if (allButton) {
+                allButton.classList.add('active');
+            }
+            applyFilters();
+            loadPortfolio();
 
-            items.forEach(item => {
-                let title = item.querySelector('.expandable-header span:nth-child(2)').textContent.toLowerCase();
-                let tags = item.querySelector('.expandable-header .text-sm').textContent.toLowerCase();
-                let itemCategory = item.getAttribute('data-category');
-                
-                // Track category stats
+            // Add debounce function and attach debounced event listener for the search bar
+            const debounce = (func, delay) => {
+                let timeoutId;
+                return (...args) => {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => func(...args), delay);
+                };
+            };
+            const debouncedApplyFilters = debounce(applyFilters, 300);
+            const searchInput = document.querySelector('input[type="text"]');
+            searchInput.addEventListener('input', debouncedApplyFilters);
+        });
+
+        function applyFilters() {
+            const searchQuery = document.querySelector('input[type="text"]').value.toLowerCase();
+            const activeButton = document.querySelector('.filter-btn.active');
+            const selectedCategory = activeButton ? activeButton.getAttribute('data-category') : "all";
+            let visibleCount = 0;
+            const categoryStats = {};
+
+            document.querySelectorAll('#portfolio-container .portfolio-item').forEach(item => {
+                const header = item.querySelector('.expandable-header');
+                const title = header ? header.querySelector('span:nth-of-type(1)').textContent.toLowerCase() : "";
+                const tags = header ? header.querySelector('.text-sm').textContent.toLowerCase() : "";
+                const itemCategory = item.getAttribute('data-category');
+
                 if (!categoryStats[itemCategory]) {
                     categoryStats[itemCategory] = { total: 0, visible: 0 };
                 }
                 categoryStats[itemCategory].total++;
-                
-                let categoryMatch = selectedCategory === "all" || itemCategory === selectedCategory;
-                let searchMatch = title.includes(searchQuery) || tags.includes(searchQuery);
+
+                const categoryMatch = selectedCategory === "all" || itemCategory === selectedCategory;
+                const searchMatch = (!searchQuery) || title.includes(searchQuery) || tags.includes(searchQuery);
 
                 if (categoryMatch && searchMatch) {
                     item.style.display = "block";
@@ -219,30 +154,16 @@
                     item.style.display = "none";
                 }
             });
-            
-            updateDebug(`Visible items: ${visibleCount}`);
-            updateDebug(`Category stats: ${JSON.stringify(categoryStats)}`);
         }
 
         function filterSelection(category) {
-            updateDebug(`Filtering by category: ${category}`);
-            
-            // Remove 'active' class from all category buttons
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
-                updateDebug(`Removed active class from ${btn.getAttribute('data-category')} button`);
             });
-
-            // Add 'active' class to the clicked button
-            let targetButton = document.querySelector(`.filter-btn[data-category="${category}"]`);
+            const targetButton = document.querySelector(`.filter-btn[data-category="${category}"]`);
             if (targetButton) {
                 targetButton.classList.add('active');
-                updateDebug(`Set active class on ${category} button`);
-            } else {
-                updateDebug(`ERROR: Could not find button for category: ${category}`);
             }
-            
-            // Apply filters with the new category
             applyFilters();
         }
     </script>
