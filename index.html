@@ -148,19 +148,40 @@
         }
 
         function searchItems() {
+            applyFilters();
+        }
+
+        function applyFilters() {
             let searchQuery = document.querySelector('input[type="text"]').value.toLowerCase();
+            let selectedCategory = document.querySelector('.my-8 button[data-category].active')?.dataset.category || "all"; // Get active category
             let items = document.querySelectorAll('.my-8 .border');
 
             items.forEach(item => {
                 let title = item.querySelector('.expandable-header span:nth-child(2)').textContent.toLowerCase();
                 let tags = item.querySelector('.expandable-header .text-sm').textContent.toLowerCase();
 
-                if (title.includes(searchQuery) || tags.includes(searchQuery)) {
+                let categoryMatch = selectedCategory === "all" || item.dataset.category === selectedCategory;
+                let searchMatch = title.includes(searchQuery) || tags.includes(searchQuery);
+
+                if (categoryMatch && searchMatch) {
                     item.style.display = "block";
                 } else {
                     item.style.display = "none";
                 }
             });
+        }
+
+
+        function filterSelection(category) {
+            // Remove 'active' class from all category buttons
+            document.querySelectorAll('.my-8 button[data-category]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked button
+            document.querySelector(`.my-8 button[data-category="${category}"]`).classList.add('active');
+            applyFilters();
+
         }
     </script>
 </body>
