@@ -10,6 +10,30 @@
         .expandable-content { display: none; }
         .expandable-header.active + .expandable-content { display: block; }
         .filter-btn.active { background-color: #3b82f6; color: white; }
+        /* Beautification added */
+        .portfolio-item {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+        .expandable-header {
+            background: linear-gradient(90deg, #f3f4f6, #e5e7eb);
+            transition: background 0.3s;
+        }
+        .expandable-header:hover {
+            background: linear-gradient(90deg, #e5e7eb, #d1d5db);
+        }
+        nav a {
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #1d4ed8;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
     </style>
 </head>
 <body class="bg-yellow-100">
